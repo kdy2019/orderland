@@ -1,9 +1,16 @@
+import { NavList } from 'src/app/class/nav-list';
+
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  navList: [
+    new NavList('Home', '/', undefined),
+    new NavList('order', '/order', { queryParams: { data: 'abc' } })
+  ],
+  toolbarTitle: 'Orderland'
 };
 
 /*

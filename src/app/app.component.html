@@ -1,1 +1,28 @@
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+    <button mat-icon-button (click)="sideNav.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <div class="container">
+        <h1 class="text-center">{{ title }}</h1>
+    </div>
+    <button mat-icon-button (click)="login()">
+        <mat-icon>{{ loginIcon }}</mat-icon>
+    </button>
+</mat-toolbar>
+
+<mat-sidenav-container class="full">
+    <mat-sidenav #sideNav mode="side">
+        <mat-nav-list>
+            <div *ngFor="let nav of navList">
+                <a mat-list-item (click)="routeTo(nav)" [routerLink]="nav.link">
+                    <mat-icon>keyboard_arrow_right</mat-icon>
+                    {{ nav.display }}
+                </a>
+            </div>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <router-outlet (activate)="setTitle($event)"></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
